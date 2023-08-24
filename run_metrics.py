@@ -13,6 +13,11 @@ import os
 
 def run_all_metric(question_per_metric):
     
+    metric_file_storage = ['results', 'checkpoints', 'except']
+    
+    for folder in metric_file_storage:
+        os.mkdir(folder)
+        
     datetime_folder = str(datetime.datetime.now().strftime("%d-%m-%y_%H-%M-%S"))
     folders = ['benchmark', 'checkpoints', 'except', 'results']
 
