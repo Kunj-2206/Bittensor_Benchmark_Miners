@@ -9,7 +9,7 @@ def extract_selected_option(model_response, sol1, sol2):
     if sol1.lower() in model_response.lower() and sol2.lower() not in model_response.lower():
         return "0"
     
-    elif sol1.lower() in model_response.lower() and sol2.lower() not in model_response.lower():
+    elif sol2.lower() in model_response.lower() and sol1.lower() not in model_response.lower():
         return "1"
     
     # Define the option labels

@@ -22,8 +22,8 @@ def generate_top_response(system_prompt,model_input):
     response = conn.getresponse()
     utf_string = response.read().decode("utf-8").replace("\n", "").replace("\t", "")
     json_resp = json.loads(utf_string)
+    conn.close()
     for choice in json_resp['choices']:
-        conn.close()
         return choice['message']['content']
 
 def generate_benchmark_response(system_prompt,model_input):
