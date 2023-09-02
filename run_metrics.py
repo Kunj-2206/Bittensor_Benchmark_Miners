@@ -13,21 +13,27 @@ import os
 
 def run_all_metric(question_per_metric):
     
-    metric_file_storage = ['results', 'checkpoints', 'except']
     
+    metric_file_storage = ['results', 'checkpoints', 'except']
+
     for folder in metric_file_storage:
-        os.mkdir(folder)
-        
+        if not os.path.exists(folder):
+            os.mkdir(folder)
+
     datetime_folder = str(datetime.datetime.now().strftime("%d-%m-%y_%H-%M-%S"))
     folders = ['benchmark', 'checkpoints', 'except', 'results']
 
     for folder in folders:
-        os.mkdir(os.path.join(folder, datetime_folder))
+        folder_path = os.path.join(folder, datetime_folder)
+        if not os.path.exists(folder_path):
+            os.mkdir(folder_path)
 
     metric_folders = ['arc', 'boolq', 'mmlu', 'openbookqa', 'piqa', 'race', 'siqa', 'winogrande']
 
     for metric_folder in metric_folders:
-        os.mkdir(os.path.join(f"checkpoints/{datetime_folder}", metric_folder))
+        folder_path = os.path.join("checkpoints", datetime_folder, metric_folder)
+        if not os.path.exists(folder_path):
+            os.mkdir(folder_path)
         
     evaluation_functions = [
         evaluate_models_arc,
