@@ -1,10 +1,9 @@
 import os
 import json
 import pandas as pd
-from git import Repo
 from run_metrics import run_all_metric
 import sys
-import shutil
+
 
 question_per_metric = 1000
 datetime_folder = run_all_metric(question_per_metric)
